@@ -29,7 +29,7 @@ void readD(int narg, char *arg[], busqueda *datos, int *mask)
         }
         else if (strcmp(arg[i], "-s") == 0) 
         {
-            if (i+1 < narg && ((strcmp(arg[i+1], "pokemon") == 0) || (strcmp(arg[i+1], "trainer"))))
+            if (i+1 < narg && ((strcmp(arg[i+1], "pokemon") == 0) || (strcmp(arg[i+1], "trainer") == 0)))
             {
                 *mask += (1<<1);
                 datos->especie = arg[i+1];
@@ -39,7 +39,6 @@ void readD(int narg, char *arg[], busqueda *datos, int *mask)
                 *mask += (1<<5);
                 i++;
             }
-
         }
         else if (strcmp(arg[i], "-t") == 0)
         {
