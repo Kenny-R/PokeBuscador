@@ -16,6 +16,53 @@ typedef struct
     char *nombre;
 } busqueda;
 
+void readD(int narg, char *arg[], busqueda *datos, int *mask) 
+{
+    int i = 1;
+    while (i < narg)
+    {
+        if (strcmp(arg[i], "-r") == 0) 
+        {
+            *mask += 1;
+            datos->region = arg[i+1];
+            i += 2;
+        }
+        else if (strcmp(arg[i], "-s") == 0) 
+        {
+            *mask += (1<<1);
+            datos->especie = arg[i+1];
+            i += 2;
+        }
+        else if (strcmp(arg[i], "-t") == 0)
+        {
+            *mask += (1<<2);
+            datos->tipo = arg[i+1];
+            i += 2;
+        }
+        else if ((strcmp(arg[i], "-c") == 0) || (strcmp(arg[i], "--nocount") == 0))
+        {
+            *mask += (1<<3);
+            i++;
+        }
+        else if ((strcmp(arg[i], "-l") == 0) || (strcmp(arg[i], "--list") == 0))
+        {
+            *mask += (1<<4);
+            i++;
+        }
+        else if (strcmp(arg[i], "--size") == 0)
+        {
+            *mask += (1<<5);
+            i++;
+        } 
+        else
+        {
+            *mask += (1<<6);
+            datos->nombre = arg[i];
+            i++;
+        }     
+    }
+}
+
 void dirwalk(char *dir, int depth, busqueda datos, int mask)
 {
     DIR *dp;
@@ -99,7 +146,7 @@ void dirwalk(char *dir, int depth, busqueda datos, int mask)
     closedir(dp);
 }
 
-int main()
+int main(int argc, char *argv[])
 {
     /* obtenemos el directorio actual */
     char cwd[PATH_MAX];
@@ -110,10 +157,9 @@ int main()
         perror("getcwd() error");
         return 1;
     }
-    int mask = 6;
+    int mask = 0;
     busqueda datos;
-    datos.especie = "trainers";
-    datos.tipo = "main";
+    readD(argc, argv, &datos, &mask);
     dirwalk(cwd, 0, datos, mask);
     return 0;
 }
