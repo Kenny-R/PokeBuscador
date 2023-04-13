@@ -1,9 +1,9 @@
 COMP = gcc -c
 LINK = gcc
 OBJDIR = etc
-OBJECTS = $(OBJDIR)/main.o
+OBJECTS = $(OBJDIR)/main.o $(OBJDIR)/utilidades.o 
 
-PROGRAM = PokeBuscador.out
+PROGRAM = fameChecker
 
 .PHONY: all clean
 
@@ -14,11 +14,14 @@ clean:
 	rm $(OBJECTS)
 	rm -r ./$(OBJDIR)
 
-$(PROGRAM): $(OBJDIR) $(OBJECTS)
+$(PROGRAM): $(OBJECTS)
 	$(LINK) $(OBJECTS) -o $(PROGRAM) -ansi
 
-$(OBJDIR)/main.o: main.c
+$(OBJDIR)/main.o: main.c $(OBJDIR) utilidades.h
 	$(COMP) main.c -o $(OBJDIR)/main.o -ansi
+
+$(OBJDIR)/utilidades.o: utilidades.c $(OBJDIR) utilidades.h
+	$(COMP) utilidades.c -o $(OBJDIR)/utilidades.o -ansi
 
 $(OBJDIR):
 	mkdir $(OBJDIR)
