@@ -153,8 +153,8 @@ int main(int argc, char *argv[])
     dirwalk(cwd, 0, datos, maskConArg, maskSinArg, &count, &totalsize);
 
     if ((maskSinArg & (1 << 1)) == 0)
-        printf("Numero de archivos encontrados: %d\n", count);
+        printf("Number of files found: %d\n", count);
     if ((maskSinArg & (1 << 2)) != 0)
-        printf("La cantidad de informacion total que buscas es de %d KB\n", totalsize);
+        printf("The total amount of information you are looking for is %d KB\n", totalsize);
     return EXIT_SUCCESS;
 }
