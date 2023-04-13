@@ -17,10 +17,10 @@ clean:
 $(PROGRAM): $(OBJECTS)
 	$(LINK) $(OBJECTS) -o $(PROGRAM) -ansi
 
-$(OBJDIR)/main.o: main.c $(OBJDIR) utilidades.h
+$(OBJDIR)/main.o: main.c $(OBJDIR) utilidades.h busqueda.h
 	$(COMP) main.c -o $(OBJDIR)/main.o -ansi
 
-$(OBJDIR)/utilidades.o: utilidades.c $(OBJDIR) utilidades.h
+$(OBJDIR)/utilidades.o: utilidades.c $(OBJDIR) utilidades.h busqueda.h
 	$(COMP) utilidades.c -o $(OBJDIR)/utilidades.o -ansi
 
 $(OBJDIR):
