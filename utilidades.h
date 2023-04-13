@@ -6,14 +6,6 @@
     #define PATH_MAX 4096
     #define STRING_MAX 100
 
-    typedef struct
-    {
-        char *region;
-        char *especie;
-        char *tipo;
-        char *nombre;
-    } busqueda;
-
     /*
     Funcion que imprime el manual de uso del programa y luego
     termina la ejecución del mismo. Se usa cuando se ha encontrado
