@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include "utilidades.h"
+#include "busqueda.h"
 
 /* variables globales */
 char ext[6] = ".html";

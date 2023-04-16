@@ -1,6 +1,8 @@
 #ifndef UTILIDADES_LIB
     #define UTILIDADES_LIB
-
+    
+    #include "busqueda.h"
+    
     #define TRUE (1 == 1)
     #define FALSE !TRUE
     #define PATH_MAX 4096
