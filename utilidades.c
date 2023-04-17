@@ -108,8 +108,9 @@ void readFA(int narg, int *pos, int *mask, int *maska, int *masksa, char *arg[],
             {
                 *maska |= (1 << 0);
                 datos->region = arg[*pos + 1];
-            }
-        *pos += 2;
+                *pos += 2;
+            } else *pos += 1;
+    
         break;
     case 's':
         if (*mask & (1 << 1))
@@ -120,8 +121,9 @@ void readFA(int narg, int *pos, int *mask, int *maska, int *masksa, char *arg[],
             {
                 *maska |= (1 << 1);
                 datos->especie = arg[*pos + 1];
-            }
-        *pos += 2;
+                *pos += 2;
+            } else *pos += 1;
+        
         break;
     case 't':
         if (*mask & (1 << 2))
@@ -132,8 +134,9 @@ void readFA(int narg, int *pos, int *mask, int *maska, int *masksa, char *arg[],
             {
                 *maska |= (1 << 2);
                 datos->tipo = arg[*pos + 1];
-            }
-        *pos += 2;
+                *pos += 2;
+            } else *pos += 1;
+      
         break;
     case 'l':
         if (*masksa & (1 << 0))
